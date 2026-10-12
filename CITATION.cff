@@ -1,18 +1,17 @@
-# Replace this file's contents with your own project's citation metadata after
-# instantiating the template. Do not list AI tools as authors.
 cff-version: 1.2.0
 message: "If you use this project, please cite it as below."
 authors:
-- family-names: "YOUR_FAMILY_NAME"
-  given-names: "YOUR_GIVEN_NAME"
-  orcid: "https://orcid.org/0000-0000-0000-0000"
-title: "{{PROJECT_NAME}}"
-version: 0.1.0
-doi: "[DOI to be assigned]"
-date-released: "{{YYYY-MM-DD}}"
-url: "https://github.com/HamSCI/{{REPO_NAME}}"
+- family-names: "Frissell"
+  given-names: "Nathaniel A."
+  orcid: "https://orcid.org/0000-0002-8398-4222"
+title: "HamSCI Presentation Templates"
+version: 1.0.0
+date-released: "2026-10-12"
+url: "https://github.com/HamSCI/presentation_templates"
 license: MIT
 keywords:
+  - presentation template
+  - LaTeX Beamer
   - HamSCI
   - amateur radio
   - space weather
