@@ -1,0 +1,130 @@
+% beamerthemeHamSCI.sty: a Beamer rendering of the HamSCI PowerPoint template
+% (../pptx/hamsci_oral_template.pptx, 16:9): bold black frame titles over a thin rule, the slide
+% number at top right, the HamSCI silhouette banner across the foot of every slide, and the
+% partner-logo acknowledgments slide. Images: hamsci_banner.png and hamsci_logos.png, from the
+% PowerPoint template. https://github.com/HamSCI/presentation_templates
+%
+% Use with \documentclass[aspectratio=169]{beamer} and \usetheme{HamSCI}.
+%   \hamscicontact{...}          contact line at the right of the banner, on every slide (the
+%                                PowerPoint template has it on the title slide only)
+%   \hamscititleframe            the title slide
+%   \hamscitakeaway{...}         the one-line bold takeaway that opens a content slide
+%   \hamscisource{...}           a small source note just above the banner, at bottom right
+%   \hamscisectionframe{...}     a large title over a rule: section dividers and "Thank you!"
+%   \hamsciacknowledgments[...]  the template's acknowledgments slide; the optional argument
+%                                adds a sentence, such as the award numbers for this work
+\ProvidesPackage{beamerthemeHamSCI}[2026/10/12 v1.0 HamSCI oral presentation theme]
+
+\RequirePackage[T1]{fontenc}
+\RequirePackage[default]{lato}
+\RequirePackage{tikz}
+
+\definecolor{hamsciaccent}{HTML}{156082}   % template theme accent 1
+\definecolor{hamscilink}{HTML}{467886}     % template theme hyperlink
+\definecolor{hamscigrey}{HTML}{595959}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamercolor{normal text}{fg=black,bg=white}
+\setbeamercolor{structure}{fg=hamsciaccent}
+\setbeamercolor{frametitle}{fg=black}
+\setbeamercolor{title}{fg=black}
+\setbeamercolor{alerted text}{fg=hamsciaccent}
+\setbeamerfont{frametitle}{size=\Large,series=\bfseries}
+\setbeamerfont{title}{size=\huge,series=\bfseries}
+\setbeamerfont{author}{size=\small}
+\setbeamerfont{institute}{size=\footnotesize}
+\setbeamerfont{date}{size=\footnotesize}
+\setbeamertemplate{itemize items}{\raisebox{0.15ex}{\scriptsize$\bullet$}}
+\setbeamertemplate{itemize subitem}{\raisebox{0.15ex}{\tiny$\blacktriangleright$}}
+\setbeamersize{text margin left=0.45cm,text margin right=0.45cm}
+\hypersetup{colorlinks=true,linkcolor=,urlcolor=hamscilink}
+
+\newcommand{\hamsci@contact}{}
+\newcommand{\hamscicontact}[1]{\renewcommand{\hamsci@contact}{#1}}
+
+% Frame title: bold, black, flush left, a rule beneath across the text width, number at top right.
+\setbeamertemplate{frametitle}{%
+  \nointerlineskip\vskip0.25cm%
+  \begin{beamercolorbox}[wd=\textwidth,leftskip=0pt,rightskip=0pt]{frametitle}%
+    \usebeamerfont{frametitle}\strut\insertframetitle\strut
+  \end{beamercolorbox}%
+  \vskip-0.12cm\textcolor{black}{\rule{\textwidth}{0.6pt}}\vskip0.05cm}
+\setbeamertemplate{headline}{%
+  \ifnum\insertframenumber=1 \else
+  \hbox to \paperwidth{\hfill\raisebox{-0.42cm}{\scriptsize\insertframenumber}\hspace{0.25cm}}%
+  \fi\vskip-0.42cm}
+
+% Footer: the template's HamSCI banner, full width (1500 x 117 px).
+\setbeamertemplate{footline}{%
+  \begin{tikzpicture}[inner sep=0pt]
+    \node[anchor=south west] (b) at (0,0)
+      {\includegraphics[width=\paperwidth]{hamsci_banner.png}};
+    \node[anchor=east,text=white,font=\small\bfseries] at
+      ([xshift=-0.3cm,yshift=0.08cm]b.east) {\hamsci@contact};
+  \end{tikzpicture}}
+
+% Title slide: large bold title over a rule, authors, then affiliations, as in the template.
+\setbeamertemplate{title page}{%
+  \vfill
+  {\usebeamerfont{title}\usebeamercolor[fg]{title}\inserttitle\par}
+  \vskip0.1cm\textcolor{black}{\rule{0.62\paperwidth}{0.8pt}}\par\vskip0.12cm
+  \ifx\insertsubtitle\@empty\else
+    {\large\insertsubtitle\par}\vskip0.18cm
+  \fi
+  {\usebeamerfont{author}\insertauthor\par}\vskip0.3cm
+  {\usebeamerfont{institute}\insertinstitute\par}\vskip0.25cm
+  {\usebeamerfont{date}\textcolor{hamscigrey}{\insertdate}\par}
+  \vfill}
+% The title slide is frame 1: no number, and the contact line in the banner.
+\newcommand{\hamscititleframe}{\begin{frame}\titlepage\end{frame}}
+
+% The one-line takeaway that opens a content slide, in the accent color.
+\newcommand{\hamscitakeaway}[1]{{\usebeamercolor[fg]{structure}\large\bfseries #1\par}\vskip8pt}
+
+% A small gray note just above the banner at bottom right: figure source, data credit, or a link
+% to the figure and the code that made it. Place it anywhere inside a frame.
+\newcommand{\hamscisource}[1]{%
+  \begin{tikzpicture}[remember picture,overlay]
+    \node[anchor=south east,font=\tiny,text=hamscigrey,inner sep=1pt,align=right]
+      at ([xshift=-0.45cm,yshift=1.32cm]current page.south east) {#1};
+  \end{tikzpicture}}
+
+% The template's "Subtitle" layout: a large bold title low on the slide over a full-width rule.
+% Used for section dividers and the closing "Thank you!" slide.
+\newcommand{\hamscisectionframe}[1]{%
+\begin{frame}
+  \vfill\vfill
+  {\usebeamerfont{title}\usebeamercolor[fg]{title}#1\par}
+  \vskip0.1cm\textcolor{black}{\rule{\textwidth}{0.8pt}}\par
+  \vfill
+\end{frame}}
+
+% Acknowledgments slide, text and logos from the template.
+\newcommand{\hamsciacknowledgments}[1][]{%
+\begin{frame}{Acknowledgments}
+  \centering
+  \begin{tikzpicture}
+    \node[draw=black,rounded corners=6pt,inner sep=3pt,line width=0.5pt]
+      {\includegraphics[width=0.94\textwidth]{hamsci_logos.png}};
+  \end{tikzpicture}\par\vskip0.15cm
+  \raggedright\scriptsize
+  \href{https://hamsci.org/}{\textbf{The HamSCI Community}} is led by
+  \href{https://www.scranton.edu/academics/cas/physics-engineering/index.shtml}{\textbf{The
+  University of Scranton Department of Physics and Engineering W3USR}}, in collaboration with
+  \href{https://case.edu/}{\textbf{Case Western Reserve University W8EDU}}, the
+  \href{https://www.ua.edu/}{\textbf{University of Alabama}}, the
+  \href{https://www.njit.edu/}{\textbf{New Jersey Institute of Technology Center for Solar
+  Terrestrial Physics K2MFF}}, \href{https://www.spacescience.org/}{\textbf{Space Science
+  Institute}}, \href{https://dartmouth.edu/}{\textbf{Dartmouth College}}, the
+  \href{https://www.haystack.mit.edu/}{\textbf{MIT Haystack Observatory}},
+  \href{https://tapr.org/}{\textbf{TAPR}}, additional collaborating universities and
+  institutions, and volunteer members of the
+  \href{http://www.arrl.org/what-is-ham-radio}{\textbf{amateur radio}} and citizen science
+  communities.\par\vskip0.1cm
+  We are grateful for the financial support of the
+  \href{https://www.nsf.gov/div/index.jsp?div=AGS}{\textbf{United States National Science
+  Foundation}}, \href{https://science.nasa.gov/heliophysics}{\textbf{NASA}}, and
+  \href{https://www.ardc.net/}{\textbf{Amateur Radio Digital Communications (ARDC)}}.
+  #1\par\vskip0.1cm
+  HamSCI silhouette photo by Ann Marie Rogalcheck-Frissell KC2KRQ.
+\end{frame}}

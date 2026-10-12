@@ -1,18 +1,21 @@
-# {{PROJECT_NAME}}
+# HamSCI Presentation Templates
 
 ## Project Overview
-{{ONE-PARAGRAPH PROJECT DESCRIPTION: what is being written or built, its purpose, and its
-audience.}}
+Presentation templates shared across HamSCI projects. The first is the oral presentation
+template: the original 16:9 PowerPoint file and a LaTeX Beamer theme that reproduces it, with a
+worked example talk and instructions. Poster templates will follow. The audience is every HamSCI
+member who gives a talk, from students to volunteers to faculty.
 
-**Lead**: {{LEAD_NAME_CALLSIGN_AND_AFFILIATION}}
-**Collaborators**: {{COLLABORATORS: names, callsigns, and roles}}
-**HamSCI Working Group**: {{WORKING_GROUP, or "none"}}
-**Institution**: {{INSTITUTION, or "none: this is a volunteer project"}}
-**Funder**: {{FUNDER_AND_GRANT_NUMBER, or "unfunded"}}
-**Project period**: {{PROJECT_PERIOD}}
+**Lead**: Nathaniel A. Frissell, W2NAF, University of Scranton
+**Collaborators**: HamSCI community members who contribute templates
+**HamSCI Working Group**: none
+**Institution**: University of Scranton
+**Funder**: none dedicated; shared HamSCI infrastructure (see `.claude/rules/ai-governance.md`)
+**Project period**: ongoing, from October 2026
 
 ## Project Goal
-{{PROJECT_GOAL, 1 to 3 sentences.}}
+Give HamSCI talks and posters a common, recognizable design that is easy to use in PowerPoint or
+LaTeX, with the instructions and house style needed to use it well.
 
 ## Standing Rules
 
@@ -22,43 +25,44 @@ automatically:
 @.claude/rules/ai-governance.md
 @.claude/rules/hamsci-data.md
 
-Two further rule files are optional, and are scoped by their own `paths:` frontmatter to the
-file types they govern:
-
-- `.claude/rules/latex-writing.md` applies to `.tex`, `.bib`, `.cls`, and `.sty` files
-- `.claude/rules/python-code.md` applies to `.py`, `pyproject.toml`, and `requirements*.txt`
-
-Delete whichever the project does not use. To have one of them load unconditionally instead, add
-an `@` import line for it above.
+`.claude/rules/latex-writing.md` applies to `.tex`, `.bib`, `.cls`, and `.sty` files, through
+its own `paths:` frontmatter. The project has no Python, so the template's `python-code.md` was
+not adopted.
 
 ## Repository Structure
 
-This project starts from the HamSCI `ai_project_template` scaffold. Add or remove top-level
-directories to match the project. The scaffold provides:
-
 ```
-{{REPO_NAME}}/
+presentation_templates/
 ├── CLAUDE.md                     ← this file; project instructions for Claude
-├── README.md
-├── LICENSE
-├── CITATION.cff                  ← make the project citable
-├── .gitignore
-├── .gitmodules                   ← present only if you add submodules
-├── .claude/
-│   ├── settings.json
-│   ├── commands/commit.md        ← /commit workflow
-│   └── rules/
-│       ├── ai-governance.md      ← required
-│       ├── hamsci-data.md        ← required
-│       ├── latex-writing.md      ← delete if no LaTeX
-│       └── python-code.md        ← delete if no Python
+├── README.md                     ← overview and license notes
+├── LICENSE                       ← MIT, for the LaTeX and docs (not the images)
+├── CITATION.cff
+├── .claude/                      ← settings, /commit, /template-sync, rules
 ├── .github/ISSUE_TEMPLATE/
-├── ai/
-│   └── ai_usage_log.md           ← mandatory AI session log
-├── docs/
-│   └── GETTING_STARTED.md        ← delete once the project is running
-└── {{PROJECT-SPECIFIC FOLDERS}}  ← e.g. manuscript/, src/, notes/, posters/, data/
+├── ai/ai_usage_log.md            ← mandatory AI session log
+├── docs/GETTING_STARTED.md       ← onboarding for contributors new to Claude Code
+└── oral/                         ← oral presentation template
+    ├── README.md                 ← how to use it, theme commands, style guide
+    ├── pptx/hamsci_oral_template.pptx
+    ├── beamer/                   ← beamerthemeHamSCI.sty, hamsci_banner.png, hamsci_logos.png
+    └── example/                  ← hamsci_example_talk.tex/.pdf, latexmkrc, make_preview.sh, preview.png
 ```
+
+Poster templates will go in `poster/`, laid out the same way.
+
+## Template Rules
+
+- **The PowerPoint file is the reference design.** The Beamer theme reproduces it; a change to
+  one is carried to the other, or an issue is opened for it.
+- **Rebuild the example with every theme change**, in the same commit: run
+  `oral/example/make_preview.sh`, which rebuilds the PDF and `preview.png`.
+- **Keep the theme backward compatible.** HamSCI talks in other repositories use it. Rename or
+  remove a command only with the lead's agreement, and record the change in the version string of
+  `\ProvidesPackage`.
+- **Images are not MIT-licensed.** The partner logos and the silhouette photograph are used with
+  permission for HamSCI presentations; do not add images whose reuse terms are unknown.
+- **Example content is placeholder text.** The placeholder callsigns (KC4AAA, KC4USV) come from
+  the PowerPoint template; never attribute example work to a real operator.
 
 ## Working Conventions
 

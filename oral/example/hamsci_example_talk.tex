@@ -1,0 +1,133 @@
+% HamSCI oral presentation template: a worked example that follows the slide order of the
+% PowerPoint template and shows each feature of the Beamer theme. Copy this file to start a talk.
+% Build from this directory with latexmk; latexmkrc points TEXINPUTS at ../beamer.
+\documentclass[aspectratio=169,10pt]{beamer}
+\usetheme{HamSCI}
+\usepackage{booktabs}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+\title{Presentation Title}
+\subtitle{Optional subtitle}
+% \texorpdfstring keeps the affiliation numbers out of the PDF's author metadata.
+\author{\textbf{Author One KC4AAA}\texorpdfstring{\textsuperscript{1,2}}{}, Author Two KC4USV\texorpdfstring{\textsuperscript{1}}{}}
+\institute{\textsuperscript{1}HamSCI\\\textsuperscript{2}Institution Two}
+\date{Meeting name, City, Day Month Year}
+\hamscicontact{email@domain.edu}
+
+\begin{document}
+
+\hamscititleframe
+
+
+% ---------------------------------------------------------------------------------------------
+\begin{frame}{Introduction}
+\hamscitakeaway{Open every slide with one line that says what the audience should remember}
+\begin{itemize}
+  \item Then support it with short lines, a table, or a figure, not paragraphs.
+  \item Keep fonts large enough to read from the back of the room.
+  \item Use American English throughout: color, center, modeled, labeled.
+\end{itemize}
+\end{frame}
+
+
+% ---------------------------------------------------------------------------------------------
+\begin{frame}{Methodology}
+\hamscitakeaway{Tables carry numbers better than sentences do}
+\small
+\begin{tabular}{@{}lll@{}}
+\toprule
+Instrument & Network & What it measures \\
+\midrule
+HF receivers & PSKReporter, RBN, WSPRNet & who heard whom, signal-to-noise ratio \\
+PSWS Grape & HamSCI PSWS & Doppler shift of time-standard stations \\
+Ionosonde & GIRO & electron density profile \\
+\bottomrule
+\end{tabular}\par\vskip10pt
+\footnotesize Details and caveats go in a footnote-sized line below the table.
+\end{frame}
+
+
+% ---------------------------------------------------------------------------------------------
+\begin{frame}{Results}
+\begin{columns}[c]
+\begin{column}{0.64\textwidth}
+\begin{tikzpicture}
+\begin{axis}[width=\linewidth, height=5.6cm, xlabel={UT (hours)}, ylabel={Value (units)},
+             xmin=0, xmax=24, grid=major, grid style={gray!25}, tick label style={font=\small},
+             label style={font=\small}]
+  \addplot[very thick, color=hamsciaccent, domain=0:24, samples=97]
+    {2 + sin(deg(2*pi*x/24)) + 0.3*sin(deg(2*pi*x/3))};
+\end{axis}
+\end{tikzpicture}
+\end{column}
+\begin{column}{0.34\textwidth}
+\hamscitakeaway{Put the figure first, and the text in the whitespace beside it}
+\small Size the figure to fill the slide, then fit the words around it.
+\end{column}
+\end{columns}
+\hamscisource{Figure: \href{https://github.com/HamSCI/presentation_templates}{link to the PNG}
+  \textbullet\ code: \href{https://github.com/HamSCI/presentation_templates}{link to the script, pinned to a commit}}
+\end{frame}
+
+
+% ---------------------------------------------------------------------------------------------
+\begin{frame}{Discussion}
+\hamscitakeaway{Two columns let you compare without crowding}
+\begin{columns}[t]
+\begin{column}{0.48\textwidth}
+\textbf{What the data show}
+\begin{itemize}
+  \item First point
+  \item Second point
+\end{itemize}
+\end{column}
+\begin{column}{0.48\textwidth}
+\textbf{What remains open}
+\begin{itemize}
+  \item First question
+  \item Second question
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+% ---------------------------------------------------------------------------------------------
+\begin{frame}{Summary}
+\hamscitakeaway{Three to five numbered points, each one line}
+\begin{enumerate}
+  \item \textbf{Observed}: the main result, with its number.
+  \item \textbf{Interpretation}: what it means.
+  \item \textbf{Next}: what comes next.
+\end{enumerate}
+\end{frame}
+
+
+% ---------------------------------------------------------------------------------------------
+\hamsciacknowledgments[This work is supported by \textit{list the awards that funded this work}.]
+
+
+% ---------------------------------------------------------------------------------------------
+% Include this slide whenever AI tools helped make the talk or the work behind it, and keep it
+% accurate. The project's AI usage log is the record it summarizes.
+\begin{frame}{Disclosure of AI use}
+\small
+\begin{itemize}
+  \item \textbf{Tool}: name and exact model version, for example Claude (Anthropic),
+    \texttt{claude-opus-5-5}, via Claude Code.
+  \item \textbf{When}: the dates of the AI-assisted sessions.
+  \item \textbf{How it was used}: concretely, for example analysis code, figures, or drafting of
+    these slides.
+  \item \textbf{Human oversight}: the authors decided the research questions, methods and
+    interpretation, reviewed all AI-assisted output, and are responsible for all content.
+  \item \textbf{Record}: where the session log is kept, for example \texttt{ai/ai\_usage\_log.md}
+    in the project repository.
+\end{itemize}
+\end{frame}
+
+
+% ---------------------------------------------------------------------------------------------
+\hamscisectionframe{Thank you!}
+
+\end{document}

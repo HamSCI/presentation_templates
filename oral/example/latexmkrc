@@ -1,0 +1,3 @@
+# Find the HamSCI Beamer theme (../beamer) through TEXINPUTS.
+ensure_path('TEXINPUTS', '../beamer//');
+$pdf_mode = 1;
