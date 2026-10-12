@@ -42,4 +42,4 @@ command produces this format and appends it in the right order.
   .tex/.pdf, latexmkrc, make_preview.sh, preview.png)
 - **Nature of Contribution**: Scaffolding, code generation (LaTeX theme and example), documentation drafting
 - **Human Review Status**: Pending review
-- **Git Hash**: [fill in after committing]
+- **Git Hash**: fe93708 (PR HamSCI/presentation_templates#1)
