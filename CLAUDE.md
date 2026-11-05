@@ -3,7 +3,8 @@
 ## Project Overview
 Presentation templates shared across HamSCI projects. The first is the oral presentation
 template: the original 16:9 PowerPoint file and a LaTeX Beamer theme that reproduces it, with a
-worked example talk and instructions. Poster templates will follow. The audience is every HamSCI
+worked example talk and instructions. The poster template is a 48 × 36 in PowerPoint file in two
+versions, HamSCI blue for everyone and purple for University of Scranton authors. The audience is every HamSCI
 member who gives a talk, from students to volunteers to faculty.
 
 **Lead**: Nathaniel A. Frissell, W2NAF, University of Scranton
@@ -26,8 +27,8 @@ automatically:
 @.claude/rules/hamsci-data.md
 
 `.claude/rules/latex-writing.md` applies to `.tex`, `.bib`, `.cls`, and `.sty` files, through
-its own `paths:` frontmatter. The project has no Python, so the template's `python-code.md` was
-not adopted.
+its own `paths:` frontmatter. The only Python is the small standalone `poster/tools/shrink_pptx.py`
+(Pillow only), so the template's `python-code.md` was not adopted.
 
 ## Repository Structure
 
@@ -46,9 +47,13 @@ presentation_templates/
     ├── pptx/hamsci_oral_template.pptx
     ├── beamer/                   ← beamerthemeHamSCI.sty, hamsci_banner.png, hamsci_logos.png
     └── example/                  ← hamsci_example_talk.tex/.pdf, latexmkrc, make_preview.sh, preview.png
+├── poster/                       ← poster template (PowerPoint only so far)
+│   ├── README.md                 ← how to use it; keeping poster files small
+│   ├── pptx/                     ← hamsci_poster_template.pptx, hamsci_scranton_poster_template.pptx
+│   ├── tools/shrink_pptx.py      ← re-encodes oversized opaque PNGs as cropped JPEGs
+│   └── preview.png
+└── notes/                        ← dated session notes
 ```
-
-Poster templates will go in `poster/`, laid out the same way.
 
 ## Template Rules
 
@@ -61,6 +66,10 @@ Poster templates will go in `poster/`, laid out the same way.
   `\ProvidesPackage`.
 - **Images are not MIT-licensed.** The partner logos and the silhouette photograph are used with
   permission for HamSCI presentations; do not add images whose reuse terms are unknown.
+- **Keep the PowerPoint files small.** Before committing a changed `.pptx`, check its size; if
+  it has grown past ~10 MB, run `poster/tools/shrink_pptx.py` on it, check it in PowerPoint and
+  regenerate `poster/preview.png`. The two poster versions differ only in accent color and
+  Scranton affiliation; carry any other change to both.
 - **Example content is placeholder text.** The placeholder callsigns (KC4AAA, KC4USV) come from
   the PowerPoint template; never attribute example work to a real operator.
 

@@ -43,3 +43,18 @@ command produces this format and appends it in the right order.
 - **Nature of Contribution**: Scaffolding, code generation (LaTeX theme and example), documentation drafting
 - **Human Review Status**: Pending review
 - **Git Hash**: fe93708 (PR HamSCI/presentation_templates#1)
+
+## [2026-11-05 21:18 UTC]
+- **Tool**: Claude (Anthropic), claude-opus-5-5
+- **Session Purpose**: Add the HamSCI and University of Scranton PowerPoint poster templates
+  supplied by N. A. Frissell, after finding why each was ~70 MB and cutting them to ~5 MB
+  without visible loss of quality.
+- **Sections/Files Affected**: poster/pptx/hamsci_poster_template.pptx and
+  poster/pptx/hamsci_scranton_poster_template.pptx (banner image re-encoded; nothing else
+  changed), poster/tools/shrink_pptx.py (new), poster/README.md (new), poster/preview.png (new,
+  rendered with LibreOffice), notes/2026-11-05_poster_templates.md (new), README.md, CLAUDE.md
+- **Nature of Contribution**: Analysis (file-size diagnosis, image-quality comparison), code
+  generation (shrink script), documentation drafting
+- **Human Review Status**: Pending review (shrunk files verified in LibreOffice only; needs a
+  check in PowerPoint)
+- **Git Hash**: ca90bee (PR HamSCI/presentation_templates#2)
