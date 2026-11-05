@@ -6,10 +6,11 @@ community look like they belong together.
 | Template | Formats | Folder |
 |---|---|---|
 | Oral presentation (16:9) | PowerPoint, LaTeX Beamer | [`oral/`](oral/) |
-| Poster | planned | |
+| Poster (48 × 36 in), HamSCI and University of Scranton versions | PowerPoint | [`poster/`](poster/) |
 
 Start with [`oral/README.md`](oral/README.md): it explains how to use the PowerPoint file and the
-Beamer theme, lists the theme's commands, and gives a short style guide for HamSCI talks.
+Beamer theme, lists the theme's commands, and gives a short style guide for HamSCI talks. For
+posters, see [`poster/README.md`](poster/README.md).
 
 ![The example talk built with the Beamer theme](oral/example/preview.png)
 
@@ -28,8 +29,8 @@ workflow? See [`docs/GETTING_STARTED.md`](docs/GETTING_STARTED.md).
 
 ## License
 
-The LaTeX theme, the example and the documentation are released under the MIT License (see
+The LaTeX theme, the example, the poster tools and the documentation are released under the MIT License (see
 [`LICENSE`](LICENSE)). The images are not covered by that license: the partner logos in
 `hamsci_logos.png` belong to their institutions, and the HamSCI silhouette photograph in
-`hamsci_banner.png` and the PowerPoint template is by Ann Marie Rogalcheck-Frissell, KC2KRQ.
+`hamsci_banner.png` and the PowerPoint templates are by Ann Marie Rogalcheck-Frissell, KC2KRQ.
 Use them for HamSCI presentations; ask before using them for anything else.
