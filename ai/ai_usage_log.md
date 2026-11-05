@@ -57,4 +57,4 @@ command produces this format and appends it in the right order.
   generation (shrink script), documentation drafting
 - **Human Review Status**: Pending review (shrunk files verified in LibreOffice only; needs a
   check in PowerPoint)
-- **Git Hash**: [fill in after committing]
+- **Git Hash**: ca90bee (PR HamSCI/presentation_templates#2)
