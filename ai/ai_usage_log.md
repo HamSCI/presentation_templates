@@ -58,3 +58,20 @@ command produces this format and appends it in the right order.
 - **Human Review Status**: Pending review (shrunk files verified in LibreOffice only; needs a
   check in PowerPoint)
 - **Git Hash**: ca90bee (PR HamSCI/presentation_templates#2)
+
+## [2026-11-12 15:43 UTC]
+- **Tool**: Claude (Anthropic), claude-opus-5-5
+- **Session Purpose**: Add AGU-compliant 44 in wide versions of the HamSCI and Scranton poster
+  templates (AGU26 limits posters to 44 in wide), keeping the 48 × 36 in originals. A first
+  attempt shrank the whole design evenly to 44 × 33 in; N. A. Frissell chose a 44 × 36 in layout instead,
+  with the same height and font sizes and narrower columns.
+- **Sections/Files Affected**: poster/pptx/hamsci_poster_template_44in.pptx and
+  poster/pptx/hamsci_scranton_poster_template_44in.pptx (new, generated),
+  poster/tools/make_44in_templates.py (new), poster/tools/scale_pptx.py (new; evenly shrinks a
+  finished poster to a new width), poster/README.md, README.md, CLAUDE.md,
+  notes/2026-11-07_agu_44in_posters.md (new)
+- **Nature of Contribution**: Code generation (layout and scaling scripts), layout design,
+  documentation drafting
+- **Human Review Status**: Pending review (checked in LibreOffice only; needs a check in
+  PowerPoint; AGU26 height limit not confirmed, agu.org refused automated fetch)
+- **Git Hash**: e2e7083 (PR HamSCI/presentation_templates#3)

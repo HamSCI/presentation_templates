@@ -3,7 +3,8 @@
 ## Project Overview
 Presentation templates shared across HamSCI projects. The first is the oral presentation
 template: the original 16:9 PowerPoint file and a LaTeX Beamer theme that reproduces it, with a
-worked example talk and instructions. The poster template is a 48 × 36 in PowerPoint file in two
+worked example talk and instructions. The poster template is a PowerPoint file in two sizes, 48 × 36 in and AGU-compliant
+44 × 36 in, and two
 versions, HamSCI blue for everyone and purple for University of Scranton authors. The audience is every HamSCI
 member who gives a talk, from students to volunteers to faculty.
 
@@ -49,8 +50,10 @@ presentation_templates/
     └── example/                  ← hamsci_example_talk.tex/.pdf, latexmkrc, make_preview.sh, preview.png
 ├── poster/                       ← poster template (PowerPoint only so far)
 │   ├── README.md                 ← how to use it; keeping poster files small
-│   ├── pptx/                     ← hamsci_poster_template.pptx, hamsci_scranton_poster_template.pptx
+│   ├── pptx/                     ← hamsci_[scranton_]poster_template.pptx (48 in) and _44in.pptx (AGU)
 │   ├── tools/shrink_pptx.py      ← re-encodes oversized opaque PNGs as cropped JPEGs
+│   ├── tools/make_44in_templates.py ← builds the 44 × 36 in AGU templates from the 48 in ones
+│   ├── tools/scale_pptx.py       ← shrinks a finished poster evenly to a new width (48 → 44 × 33 in)
 │   └── preview.png
 └── notes/                        ← dated session notes
 ```
@@ -69,7 +72,8 @@ presentation_templates/
 - **Keep the PowerPoint files small.** Before committing a changed `.pptx`, check its size; if
   it has grown past ~10 MB, run `poster/tools/shrink_pptx.py` on it, check it in PowerPoint and
   regenerate `poster/preview.png`. The two poster versions differ only in accent color and
-  Scranton affiliation; carry any other change to both.
+  Scranton affiliation; carry any other change to both. The `_44in` files are generated from
+  the 48 in ones with `poster/tools/make_44in_templates.py`; edit the 48 in file and regenerate them.
 - **Example content is placeholder text.** The placeholder callsigns (KC4AAA, KC4USV) come from
   the PowerPoint template; never attribute example work to a real operator.
 
