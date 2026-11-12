@@ -74,4 +74,4 @@ command produces this format and appends it in the right order.
   documentation drafting
 - **Human Review Status**: Pending review (checked in LibreOffice only; needs a check in
   PowerPoint; AGU26 height limit not confirmed, agu.org refused automated fetch)
-- **Git Hash**: <filled in after committing>
+- **Git Hash**: e2e7083 (PR HamSCI/presentation_templates#3)
