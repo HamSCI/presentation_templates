@@ -6,7 +6,7 @@ community look like they belong together.
 | Template | Formats | Folder |
 |---|---|---|
 | Oral presentation (16:9) | PowerPoint, LaTeX Beamer | [`oral/`](oral/) |
-| Poster (48 × 36 in), HamSCI and University of Scranton versions | PowerPoint | [`poster/`](poster/) |
+| Poster (48 × 36 in, and 44 × 36 in for AGU), HamSCI and University of Scranton versions | PowerPoint | [`poster/`](poster/) |
 
 Start with [`oral/README.md`](oral/README.md): it explains how to use the PowerPoint file and the
 Beamer theme, lists the theme's commands, and gives a short style guide for HamSCI talks. For
