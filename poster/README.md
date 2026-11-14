@@ -34,7 +34,22 @@ For a poster you have already built on the 48 in template, the safest route is t
 `_44in` template and paste your content in, column by column. Your figures will need resizing
 for the narrower columns.
 
-For a quick conversion instead, [`tools/scale_pptx.py`](tools/scale_pptx.py) shrinks the
+To keep the poster 36 in tall, [`tools/poster_44in.py`](tools/poster_44in.py) re-lays a finished
+poster out on the 44 in template's geometry: the banner photo is cropped 4 in at the right, the
+three columns move to the 44 in template's positions, and the title, author bar and footer keep
+their font sizes. Inside the columns, fonts, pictures and indents scale by 0.915 (28 pt becomes
+25.6 pt), so every text box wraps exactly as it did at 48 in and nothing overflows:
+
+```bash
+python3 poster/tools/poster_44in.py my_poster.pptx my_poster_44in.pptx            # 44 × 36 in
+python3 poster/tools/poster_44in.py my_poster.pptx my_poster_44in.pptx --keep-fonts  # re-flow by hand
+```
+
+It works best on a poster built from these templates, since it finds the banner, title, bars and
+footer by their template names. If a long title wraps onto an extra line, or footer items collide,
+nudge them in PowerPoint. It needs only Python 3.
+
+For an even quicker conversion, [`tools/scale_pptx.py`](tools/scale_pptx.py) shrinks the
 whole poster evenly to a new width, so nothing has to be redone. The poster comes out 44 × 33 in, with fonts at 11/12 size (28 pt becomes 25.67 pt):
 
 ```bash
