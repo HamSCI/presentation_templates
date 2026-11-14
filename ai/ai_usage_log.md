@@ -82,4 +82,4 @@ command produces this format and appends it in the right order.
 - **Sections/Files Affected**: `poster/tools/poster_44in.py` (new), `poster/README.md` (Converting a 48 in poster to 44 in), `notes/2026-11-14_poster_44in_finished_posters.md` (new).
 - **Nature of Contribution**: Code generation, documentation.
 - **Human Review Status**: Pending review (checked in LibreOffice on two posters; not yet in PowerPoint).
-- **Git Hash**: pending
+- **Git Hash**: b3cfc99 (branch poster-44in-finished-posters)
