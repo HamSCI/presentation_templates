@@ -75,3 +75,11 @@ command produces this format and appends it in the right order.
 - **Human Review Status**: Pending review (checked in LibreOffice only; needs a check in
   PowerPoint; AGU26 height limit not confirmed, agu.org refused automated fetch)
 - **Git Hash**: e2e7083 (PR HamSCI/presentation_templates#3)
+
+## [2026-11-14 17:14 UTC]
+- **Tool**: Claude (Anthropic), claude-opus-5-5
+- **Session Purpose**: Contribute `poster_44in.py`, which re-lays a finished 48 × 36 in HamSCI poster out at 44 × 36 in on the 44 in template's geometry, written for two AGU 2026 posters.
+- **Sections/Files Affected**: `poster/tools/poster_44in.py` (new), `poster/README.md` (Converting a 48 in poster to 44 in), `notes/2026-11-14_poster_44in_finished_posters.md` (new).
+- **Nature of Contribution**: Code generation, documentation.
+- **Human Review Status**: Pending review (checked in LibreOffice on two posters; not yet in PowerPoint).
+- **Git Hash**: b3cfc99 (branch poster-44in-finished-posters)
